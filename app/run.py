@@ -13,6 +13,9 @@ CONFIG_ARGS = 'args'
 CONFIG_DAYS = 'days'
 CONFIG_HOURS = 'hours'
 CONFIG_MINUTES = 'minutes'
+CONFIG_STARTHOUR = 'starthour'
+CONFIG_STOPHOUR = 'stophour'
+CONFIG_MINUTE = 'runminute'
 
 
 def new_job(cron, filename, config):
@@ -30,6 +33,9 @@ def schedule_job(cron, job, config):
     try:
         schedule = config[CONFIG_SCHEDULE]
         print("{}: {}".format(CONFIG_SCHEDULE, schedule))
+        if CONFIG_STARTHOUR in schedule:
+            job.minute.on(schedule[CONFIG_MINUTE])
+            job.hour.during(schedule[CONFIG_STARTHOUR], schedule[CONFIG_STOPHOUR])
         if CONFIG_DAYS in schedule:
             job.every(schedule[CONFIG_DAYS]).days()
         elif CONFIG_HOURS in schedule:
