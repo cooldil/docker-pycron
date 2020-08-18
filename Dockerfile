@@ -4,6 +4,9 @@ LABEL maintainer="Kevin Fronczak <kfronczak@gmail.com>"
 VOLUME /work
 VOLUME /share
 
+ENV TZ=America/New_York
+RUN RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN mkdir /app
 WORKDIR /app
 
