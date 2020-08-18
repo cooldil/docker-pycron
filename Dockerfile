@@ -5,7 +5,6 @@ VOLUME /work
 VOLUME /share
 
 ENV TZ=America/New_York
-RUN RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN mkdir /app
 WORKDIR /app
@@ -30,5 +29,7 @@ RUN rm -rf build dist *egg.info
 WORKDIR /work
 RUN chmod +x /app/start.sh
 RUN chmod +x /app/run.py
+
+RUN RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 CMD ["/app/start.sh"]
