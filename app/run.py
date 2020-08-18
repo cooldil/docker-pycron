@@ -36,7 +36,7 @@ def schedule_job(cron, job, config):
         if CONFIG_STARTHOUR in schedule:
             job.minute.on(schedule[CONFIG_MINUTE])
             job.hour.during(schedule[CONFIG_STARTHOUR], schedule[CONFIG_STOPHOUR])
-        if CONFIG_DAYS in schedule:
+        elif CONFIG_DAYS in schedule:
             job.every(schedule[CONFIG_DAYS]).days()
         elif CONFIG_HOURS in schedule:
             job.every(schedule[CONFIG_HOURS]).hours()
