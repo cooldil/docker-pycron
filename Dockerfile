@@ -21,7 +21,7 @@ RUN apt-get update && \
 ADD prebuild /tmp
 RUN cd /tmp && \
     numpy*.whl \
-    pandas*.whl \
+    pandas*.whl
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
