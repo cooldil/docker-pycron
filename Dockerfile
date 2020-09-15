@@ -17,8 +17,12 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install cython --upgrade
-RUN pip install numpy --upgrade
+# Prebuild packages
+ADD prebuild /tmp
+RUN cd /tmp && \
+    numpy*.whl \
+    pandas*.whl \
+
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 COPY VERSION VERSION
