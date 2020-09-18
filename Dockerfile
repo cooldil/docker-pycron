@@ -1,4 +1,4 @@
-FROM python:3.7-slim-stretch
+FROM python:3.8-slim-stretch
 LABEL maintainer="Kevin Fronczak <kfronczak@gmail.com>"
 
 VOLUME /work
