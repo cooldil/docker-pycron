@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM python:3.8
 LABEL maintainer="Kevin Fronczak <kfronczak@gmail.com>"
 
 VOLUME /work
