@@ -1,4 +1,4 @@
-FROM python:3.7-slim-stretch
+FROM python:3.8-slim-buster
 LABEL maintainer="Kevin Fronczak <kfronczak@gmail.com>"
 
 VOLUME /work
@@ -16,6 +16,13 @@ RUN apt-get update && \
     logrotate && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Prebuild packages
+ADD prebuild /tmp
+RUN cd /tmp && \
+   pip install numpy*.whl \
+   pandas*.whl
+RUN rm -rf /tmp/numpy*.whl /tmp/pandas*.whl
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
