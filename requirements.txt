@@ -6,3 +6,8 @@ datetime>=4.3
 pytz>=2020.1
 influxdb>=5.3.0
 isodate>=0.6.0
+pysolcast
+astral
+pvlib
+elementpath
+beautifulsoap4
