@@ -10,4 +10,4 @@ pysolcast
 astral
 pvlib
 elementpath
-beautifulsoap4
+beautifulsoup4
