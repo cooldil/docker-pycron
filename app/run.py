@@ -21,9 +21,10 @@ CONFIG_MINUTE = 'runminute'
 def new_job(cron, filename, config):
     """Create a python job."""
     if CONFIG_ARGS in config:
-        print("Found following args: {}".format(config[CONFIG_ARGS]))
-        for arg in config[CONFIG_ARGS]:
-            filename = "{} {}".format(filename, arg)
+        print("   arguments: {}".format(config[CONFIG_ARGS]))
+        #for arg in config[CONFIG_ARGS]:
+        #    filename = "{} {}".format(filename, arg)
+        filename = "{} {}".format(filename, config[CONFIG_ARGS])
 
     return cron.new(command="/usr/local/bin/python {}".format(filename))
 
@@ -32,7 +33,7 @@ def schedule_job(cron, job, config):
     """Creates scheduling for jobs."""
     try:
         schedule = config[CONFIG_SCHEDULE]
-        print("{}: {}".format(CONFIG_SCHEDULE, schedule))
+        print("   {}: {}".format(CONFIG_SCHEDULE, schedule))
         if CONFIG_STARTHOUR in schedule:
             job.minute.on(schedule[CONFIG_MINUTE])
             job.hour.during(schedule[CONFIG_STARTHOUR], schedule[CONFIG_STOPHOUR])
