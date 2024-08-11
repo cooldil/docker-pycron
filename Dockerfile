@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM python:3.12.5-slim-bookworm
 LABEL maintainer="Kevin Fronczak <kfronczak@gmail.com>"
 
 VOLUME /work
@@ -21,8 +21,9 @@ RUN apt-get update && \
 ADD prebuild /tmp
 RUN cd /tmp && \
    pip install numpy*.whl \
-   pandas*.whl
-RUN rm -rf /tmp/numpy*.whl /tmp/pandas*.whl
+   pandas*.whl \
+   astral*.whl
+RUN rm -rf /tmp/numpy*.whl /tmp/pandas*.whl /tmp/astral*.whl
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
