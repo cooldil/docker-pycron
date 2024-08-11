@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bulleye
+FROM python:3.12-slim-bullseye
 LABEL maintainer="Kevin Fronczak <kfronczak@gmail.com>"
 
 VOLUME /work
